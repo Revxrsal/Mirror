@@ -54,8 +54,10 @@ class MirrorFactory {
                             if (p != Object.class && !matching.isAssignableFrom(p)) {
                                 continue;
                             }
-                            if (i + 1 == types.length)
+                            if (i + 1 == types.length) {
+                                if (!constructor.isAccessible()) constructor.setAccessible(true);
                                 return MethodHandles.lookup().unreflectConstructor(constructor);
+                            }
                         }
                     }
                     Constructor<?> ctr = type.getDeclaredConstructor(types);
@@ -72,6 +74,7 @@ class MirrorFactory {
             invocationHandler.setMirrorClass(proxyType.getSimpleName());
             return proxy;
         } catch (Throwable throwable) {
+            throwable.printStackTrace();
             sneakyThrow(sanitizeStackTrace(throwable));
             return null;
         }
