@@ -217,3 +217,6 @@ public static void main(String[] args) {
 }
 ```
 Note that any attempt to run instance-methods or get instance-fields will throw an exception.
+
+# Disclaimer
+This library was highly influenced by [Lucko's `shadow` library](https://github.com/lucko/shadow), however with some improvements and more features.
