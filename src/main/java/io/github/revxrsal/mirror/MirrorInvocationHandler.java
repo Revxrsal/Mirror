@@ -39,10 +39,10 @@ class MirrorInvocationHandler implements InvocationHandler {
     private final @NotNull Map<Method, Object> enums = new ConcurrentHashMap<>();
 
     public MirrorInvocationHandler(Object handle) {
-        Class<?> handleType = handle instanceof Class ? (Class<?>) handle : handle.getClass();
         this.handle = handle;
-        if (Mirror.class.isAssignableFrom(handleType))
-            throw sanitizeStackTrace(new IllegalArgumentException("You cannot mirrorize a mirror! (Did you forget @MirrorClass?)"));
+//        Class<?> handleType = handle instanceof Class ? (Class<?>) handle : handle.getClass();
+//        if (Mirror.class.isAssignableFrom(handleType))
+//            throw sanitizeStackTrace(new IllegalArgumentException("You cannot mirrorize a mirror! (Did you forget @MirrorClass?)"));
     }
 
     public void setMirror(Mirror mirror) {
