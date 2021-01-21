@@ -190,6 +190,7 @@ class MirrorInvocationHandler implements InvocationHandler {
                 if (method.getName().equals(name)) {
                     Class<?>[] params = method.getParameterTypes();
                     if (args.length == params.length && params.length == 0) {
+                        if (!method.isAccessible()) method.setAccessible(true);
                         return bind(MethodHandles.lookup().unreflect(method));
                     }
                     for (int i = 0; i < types.length; i++) {
